@@ -24,13 +24,23 @@ class GoogleAuth extends React.Component {
         this.setState({ isSignedIn: this.auth.isSignedIn.get() });
     };
 
-    renderAuthButton() {
+    renderAuthButton() { // 1.5
         if (this.state.isSignedIn === null) {
-            return <div>I do not know if we are signed in</div>;
+            return null;
         } else if (this.state.isSignedIn) {
-            return <div>I am signed in!</div>;
+            return (
+                <button className="ui red google button">
+                    <i className="google icon" />
+                    Sign Out
+                </button>
+            );
         } else {
-            return <div>I am not signed in</div>;
+            return (
+                <button className="ui red google button">
+                    <i className="google icon" />
+                    Sign in with Google
+                </button>
+            );
         }
     };
 
@@ -57,4 +67,7 @@ Reason for null is that we do not know if the user user is signed in or not.
 // 1.4
 Function will be called anytime that users authentication status changes. 
 Callback function therefore arrow function sp that it's context is bound to the component. 
+
+// 1.5
+In the case of the if statement the null can also be replace with a spinner. 
 */
