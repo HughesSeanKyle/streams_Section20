@@ -13,11 +13,17 @@ class GoogleAuth extends React.Component {
             }).then(() => { // 1.1
                 this.auth = window.gapi.auth2.getAuthInstance(); // 1.2
                 this.setState({ isSignedIn: this.auth.isSignedIn.get() })
+                this.auth.isSignedIn.listen(this.onAuthChange);
             });
         });
     }
 
-    // Helper method
+    // Helper methods
+    // 1.4
+    onAuthChange = () => {
+        this.setState({ isSignedIn: this.auth.isSignedIn.get() });
+    };
+
     renderAuthButton() {
         if (this.state.isSignedIn === null) {
             return <div>I do not know if we are signed in</div>;
@@ -26,7 +32,7 @@ class GoogleAuth extends React.Component {
         } else {
             return <div>I am not signed in</div>;
         }
-    }
+    };
 
     render() {
         return <div>{this.renderAuthButton()}</div>;
@@ -47,4 +53,8 @@ Reference to auth instance that will enable user to sign in/out or get users cur
 
 // 1.3
 Reason for null is that we do not know if the user user is signed in or not. 
+
+// 1.4
+Function will be called anytime that users authentication status changes. 
+Callback function therefore arrow function sp that it's context is bound to the component. 
 */
