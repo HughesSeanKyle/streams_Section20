@@ -26,6 +26,20 @@ class StreamCreate extends React.Component {
     }
 }
 
+const validate = (formValues) => { // 1.5
+    const errors = {};
+
+    if (!formValues.title) {
+        errors.title = "You must enter a title";
+    }
+
+    if (!formValues.title) {
+        errors.description = "You must enter a description";
+    }
+
+    return errors;
+} 
+
 export default reduxForm({
     form: 'streamCreate'
 })(StreamCreate); // 1.2
@@ -43,4 +57,7 @@ reduxForm will call a function and we immediately call the function with StreamC
 
 // 1.4 
 <input {...input} /> - Will take all key value pairs and add them as properties to the input element
+
+// 1.5
+At this point the validate function must be hooked/wired up to redux-form
 */
