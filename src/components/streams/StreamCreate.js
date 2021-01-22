@@ -2,15 +2,20 @@ import React from "react";
 import { Field, reduxForm } from 'redux-form'; // 1.1
 
 class StreamCreate extends React.Component {
-    renderInput(formProps) {
-        return <input {...formProps.input} /> //1.4
+    renderInput({ input, label }) { //1.4
+        return (
+            <div className="field">
+                <label>{label}</label>
+                <input {...input} /> 
+            </div>
+        ); 
     }
 
     render() { // 1.3 
         return(
-            <form>
-                <Field name="title" component={this.renderInput} />
-                <Field name="description" component={this.renderInput} />
+            <form className="ui form">
+                <Field name="title" component={this.renderInput} label="Enter Title" />
+                <Field name="description" component={this.renderInput} label="Enter Description" />
             </form>
         ); 
     }
@@ -32,5 +37,5 @@ reduxForm will call a function and we immediately call the function with StreamC
 <Field /> - Is a component that that will solicit any form of input from the user.  
 
 // 1.4 
-Will take all key value pairs and add them as properties to the input element
+<input {...input} /> - Will take all key value pairs and add them as properties to the input element
 */
