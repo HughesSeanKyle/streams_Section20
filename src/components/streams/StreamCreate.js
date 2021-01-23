@@ -1,5 +1,8 @@
 import React from "react";
 import { Field, reduxForm } from 'redux-form'; // 1.1
+import { connect } from 'react-redux';
+
+import { createStream } from '../../actions'; // 1.9
 
 class StreamCreate extends React.Component {
     renderError({ error, touched }) {
@@ -85,4 +88,7 @@ If the error object has an identical name as the name provided within the field 
 // 1.8
 renderInput({ input, label, meta }) { //1.4
     The destructured value 'meta' in this case holds all meta data pertaining to each field componenent. The meta data included the error that was passed through from the validate function. 
+
+// 1.9
+Up two directories
 */
