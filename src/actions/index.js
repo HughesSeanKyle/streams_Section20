@@ -53,3 +53,18 @@ export const deleteStream = (id) => async dispatch => {
 
     dispatch({ type: DELETE_STREAM, payload: id });
 };
+
+/*
+// 1.1
+ES2015 Object tricks
+const animalSounds = { cat: 'meow', dog: 'bark' };
+
+const animal = 'lion';
+
+const sound = 'roar';
+
+// Add above two variables to the animalsounds object without mutuatiing original object. 
+{ ...animalSounds, [animal]: sounds }
+
+The square braces on the animal key is called key interpolation. (NB! An array is note being created. )
+*/
