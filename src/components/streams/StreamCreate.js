@@ -26,9 +26,9 @@ class StreamCreate extends React.Component {
         ); 
     }
 
-    onSubmit(formValues) {
-        console.log(formValues);
-    }
+    onSubmit = (formValues) => { // 1.10
+        this.props.createStream(formValues);
+    };
 
     render() { // 1.3 
         return(
@@ -41,7 +41,7 @@ class StreamCreate extends React.Component {
     }
 }
 
-const validate = (formValues) => { // 1.5
+const validate = formValues => { // 1.5
     const errors = {};
 
     if (!formValues.title) {
@@ -55,10 +55,12 @@ const validate = (formValues) => { // 1.5
     return errors; // 1.7
 } 
 
-export default reduxForm({
+const formWrapped = reduxForm({
     form: 'streamCreate',
     validate: validate  // 1.6
 })(StreamCreate); // 1.2
+
+export default connect(null, { createStream })(formWrapped);
 
 /*
 // 1.1
@@ -91,4 +93,7 @@ renderInput({ input, label, meta }) { //1.4
 
 // 1.9
 Up two directories
+
+// 1.10
+a callback function passed off to a component should be bound by making use of an arrow function. 
 */
