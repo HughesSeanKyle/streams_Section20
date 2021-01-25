@@ -10,6 +10,7 @@ import {
     EDIT_STREAM 
 } from './types';
 
+// Authentication Action Creators
 export const signIn = (userId) => {
     return {
         type: SIGN_IN,
@@ -23,7 +24,7 @@ export const signOut = () => {
     };
 };
 
-// Action Creators
+// Stream CRUD Action Creators
 export const createStream = formValues => async dispatch => {
     const response = await streams.post('/streams', formValues);
 
