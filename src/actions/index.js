@@ -66,5 +66,5 @@ const sound = 'roar';
 // Add above two variables to the animalsounds object without mutuatiing original object. 
 { ...animalSounds, [animal]: sounds }
 
-The square braces on the animal key is called key interpolation. (NB! An array is note being created. )
+The square braces on the animal key is called key interpolation. (NB! An array is note being created.)
 */
